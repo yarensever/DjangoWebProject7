@@ -1,5 +1,4 @@
 django >= 2.2.13, < 3.0
-datetime
-pandas
-requests
-json
+pandas== 1.0.5
+requests==2.24.0
+json5==0.9.5
