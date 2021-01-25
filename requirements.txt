@@ -4,5 +4,7 @@ requests==2.24.0
 json5==0.9.5
 tensorflow==2.3.1
 scikit_learn==0.23.1
+numpy == 1.18.1
+keras
 gunicorn
 django-heroku
