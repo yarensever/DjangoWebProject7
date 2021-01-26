@@ -43,7 +43,6 @@ def split_dataset(df,look_back):
     values  = df.values.reshape(-1,1)
     values  = values.astype('float32')
     dataset = scaler.fit_transform(values)
-    print("Dataset length is:", len(dataset))
      
     #%80 Train %20 Test
     split_by    = 0.79999
