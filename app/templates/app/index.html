@@ -1,21 +1,50 @@
-<div id="container"></div>
-<script src="https://code.highcharts.com/highcharts.src.js"></script>
+
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/data.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/themes/dark-unica.js"></script>
+
+<div id="container" style="height: 800px; min-width: 310px"></div>
+
+<style>
+    body {
+        background-color: #2a2a2b
+</style>
+
 <script>
   Highcharts.chart('container', {
       chart: {
           type: 'line'
       },
       title: {
-          text: 'Market Clearing Price'
+          text: 'Day Ahead Market Clearing Price Forecasting'
       },
+
       xAxis: {
-          
+          data: {{Saat|safe}},
+          title: {
+                text: 'Hour'
+          } 
       },
+
+        yAxis: {
+            title: {
+                text: 'Price'
+            }
+       },
+
       series: [{
-          name: 'Eur/MWh',
+          name: 'EUR/MWh',
           data: {{mcp_eur|safe}},
-          color: 'green'
+      }, {
+          name: 'TL/MWh',
+          data: {{mcp_tl|safe}},
+      }, {
+          name: 'USD/MWh',
+          data: {{mcp_usd|safe}},
       }
-      ]
+      ],
+
   });
 </script>
