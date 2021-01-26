@@ -50,7 +50,7 @@ def split_dataset(df,look_back):
     train_size  = int(len(dataset) * split_by)
     test_size   = len(dataset) - train_size
     train, test = dataset[0:train_size, :], dataset[train_size:len(dataset), :]
-    return train,test,dataset
+    return train, test, dataset
 
 def create_dataset(dataset, look_back):
         data_X, data_Y = [], []
