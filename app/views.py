@@ -1,8 +1,6 @@
-
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
-import itertools
 from math import sqrt
 from datetime import datetime
 from numpy import concatenate
@@ -24,7 +22,7 @@ scaler  = MinMaxScaler(feature_range=(0, 1))
 #first of all, create one year data
 def EPIAS_API():
     down = './test.json'
-    url  = 'https://seffaflik.epias.com.tr/transparency/service/market/day-ahead-mcp?endDate=2021-01-24&startDate=2020-01-26'
+    url  = 'https://seffaflik.epias.com.tr/transparency/service/market/day-ahead-mcp?endDate=2020-12-28&startDate=2019-12-30'
     outpath=down
     generatedURL=url
     response = requests.get(generatedURL)
@@ -117,16 +115,23 @@ def output(df, look_back):
 def home(request):
     df = EPIAS_API()
     df_eur = df['priceEur']
+    df_usd = df['priceUsd']
+    df_tl  = df['price']
 
     look_back = 24
     mcp_eur = output(df_eur, look_back).tolist()
-    print(mcp_eur)
+    mcp_tl = output(df_tl, look_back).tolist()
+    mcp_usd = output(df_usd, look_back).tolist()
+    Saat = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 
     return render(
         request,
         'app/index.html',
         {
-            'mcp_eur':mcp_eur
+            'mcp_eur':mcp_eur,
+            'mcp_tl':mcp_tl,
+            'mcp_usd':mcp_usd,
+            'Saat': Saat
         }
     )
 
