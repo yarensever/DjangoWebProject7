@@ -1,1 +1,1 @@
-web: gunicorn --workers=6 --threads=2 --worker-class=gthread DjangoWebProject7.wsgi --preload
+web: gunicorn --workers 3 -k gevent DjangoWebProject7.wsgi  --preload
