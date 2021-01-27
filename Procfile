@@ -1,1 +1,1 @@
-web: gunicorn DjangoWebProject7.wsgi --workers 2 -k gevent --preload
+web: gunicorn django_tasklist.wsgi --log-file -
