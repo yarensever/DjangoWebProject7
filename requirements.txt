@@ -7,4 +7,5 @@ scikit_learn==0.23.1
 numpy == 1.18.1
 keras
 gunicorn
+gevent
 django-heroku
