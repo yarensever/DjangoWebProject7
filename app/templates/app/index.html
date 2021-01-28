@@ -1,10 +1,23 @@
+
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script src="https://code.highcharts.com/stock/modules/data.js"></script>
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/themes/dark-unica.js"></script>
 
-<div id="container" style="height: 500px; min-width: 310px"></div>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+<script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+
+
+<div id="container" style="height: 400px;"></div>
+
 
 <style>
     body {
@@ -20,6 +33,10 @@
       title: {
           text: 'Day Ahead Market Clearing Price Forecasting'
       },
+
+        subtitle: {
+              text: ' {{date|safe}} '
+          },
 
       xAxis: {
           data: {{Saat|safe}},
