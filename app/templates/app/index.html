@@ -1,4 +1,4 @@
-
+<meta charset="UTF-8">
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script src="https://code.highcharts.com/stock/modules/data.js"></script>
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
@@ -15,7 +15,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
 <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 
-
+<p style="color:White; font-family:Calibri;">  Asagidaki sonuclar yarinin Gun Oncesi Elektrik Piyasa Takas Fiyati tahminlemesini gostermektedir.</p>
+<p style="color:White; font-family:Calibri;">  Tahminleme iki farkli algoritma kullanilarak yapilmistir. </p>
 
 <div id="container" style="height: 400px;"></div>
 
@@ -32,7 +33,8 @@
           type: 'line'
       },
       title: {
-          text: 'Day Ahead Market Clearing Price Forecasting'
+          useHTML: true,
+          text: 'Gun Oncesi Piyasasi Piyasa Takas Fiyati Tahmini'
       },
 
         subtitle: {
@@ -42,28 +44,42 @@
       xAxis: {
           data: {{Saat|safe}},
           title: {
-                text: 'Hour'
+                text: 'Saat'
           } 
       },
 
         yAxis: {
             title: {
-                text: 'Price'
+                text: 'PTF'
             }
        },
 
       series: [{
-          name: 'EUR/MWh',
-          data: {{mcp_eur|safe}},
+          name: 'EUR/MWh LSTM',
+          data: {{lstm_eur|safe}},
       }, {
-          name: 'USD/MWh',
-          data: {{mcp_usd|safe}},
+          name: 'USD/MWh LSTM',
+          data: {{lstm_usd|safe}},
+      },  {
+          name: 'TL/MWh LSTM',
+          data: {{lstm_tl|safe}},
       }, {
-          name: 'TL/MWh',
-          data: {{mcp_tl|safe}},
+          name: 'EUR/MWh AR',
+          data: {{ar_eur|safe}},
+      }, {
+          name: 'USD/MWh AR',
+          data: {{ar_usd|safe}},
+      }, {
+          name: 'TL/MWh AR',
+          data: {{ar_tl|safe}},
       }
-
       ],
-
+      
+        exporting: {
+            showTable: true
+        }
   });
 </script>
+ 
+<p       </p>
+<p style="color:White; font-family:Calibri;">*Piyasa Takas Fiyati tahminlemesi Euro kuru uzerinden yapilmistir. Turk Lirasi ve Dolar sonuclari guncel kurlara gore hesaplanmistir.</p>
