@@ -17,7 +17,6 @@ from sklearn.utils import shuffle
 import requests
 import json
 import datetime
-import schedule 
 import time
 from evds import evdsAPI
 scaler  = MinMaxScaler(feature_range=(0, 1))
