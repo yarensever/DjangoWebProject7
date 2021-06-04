@@ -15,8 +15,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
 <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 
-<p style="color:White; font-family:Calibri;">  Asagidaki sonuclar yarinin Gun Oncesi Elektrik Piyasa Takas Fiyati tahminlemesini gostermektedir.</p>
-<p style="color:White; font-family:Calibri;">  Tahminleme iki farkli algoritma kullanilarak yapilmistir. </p>
+<p style="color:White; font-family:Calibri;">  Next day's electricity price forecasting results are shown below.</p>
+<p style="color:White; font-family:Calibri;">  Results for 4 different forecasting algorithms are available in the graph. </p>
 
 <div id="container" style="height: 400px;"></div>
 
@@ -34,7 +34,7 @@
       },
       title: {
           useHTML: true,
-          text: 'Gun Oncesi Piyasasi Piyasa Takas Fiyati Tahmini'
+          text: 'Day-Ahead Electricity Price Forecasting Results'
       },
 
         subtitle: {
@@ -42,7 +42,7 @@
           },
 
       xAxis: {
-          data: {{Saat|safe}},
+          data: {{Hour|safe}},
           title: {
                 text: 'Saat'
           } 
@@ -58,11 +58,14 @@
           name: 'EUR/MWh LSTM',
           data: {{lstm_eur|safe}},
       }, {
-          name: 'USD/MWh LSTM',
-          data: {{lstm_usd|safe}},
-      },  {
-          name: 'TL/MWh LSTM',
-          data: {{lstm_tl|safe}},
+          name: 'EUR/MWh Prophet Algorithm',
+          data: {{pr_eur|safe}},
+      },{
+          name: 'EUR/MWh Multiple Regression',
+          data: {{mr_eur|safe}},
+      },{
+          name: 'EUR/MWh Multivariate LSTM',
+          data: {{mult_lstm_eur|safe}},
       }
       ],
       
@@ -73,4 +76,4 @@
 </script>
  
 <p       </p>
-<p style="color:White; font-family:Calibri;">*Piyasa Takas Fiyati tahminlemesi Euro kuru uzerinden yapilmistir. Turk Lirasi ve Dolar sonuclari guncel kurlara gore hesaplanmistir.</p>
+{#<p style="color:White; font-family:Calibri;">*Piyasa Takas Fiyati tahminlemesi Euro kuru uzerinden yapilmistir. Turk Lirasi ve Dolar sonuclari guncel kurlara gore hesaplanmistir.</p>#}
